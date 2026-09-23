@@ -37,7 +37,16 @@
   ════════════════════════════════════ -->
   <div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Main Navigation Menu">
     <div class="mobile-menu-header">
-      <span class="t-eyebrow">Menu</span>
+      <a href="index.html" class="mobile-menu-brand" aria-label="Cut &amp; Paste Interior Studio Home">
+        <img class="mobile-menu-logo" src="images/logo.png" alt="Cut &amp; Paste Interior Studio" width="44" height="44">
+        <div class="brand-text">
+          <span class="brand-name">CUT &amp; PASTE</span>
+          <span class="brand-subtitle">Interior Studio</span>
+        </div>
+      </a>
+      <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close navigation menu">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
     </div>
     <nav aria-label="Mobile site navigation">
       <ul class="mobile-nav-list">
@@ -67,7 +76,7 @@
     <div class="container header-inner">
 
       <a href="index.html" class="header-brand" aria-label="Cut &amp; Paste Interior Studio Home">
-        <img class="brand-mark" src="images/logo.jpeg" onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%232A211B\'/><text y=\'.75em\' font-size=\'60\' x=\'20\' font-family=\'serif\' fill=\'%23A47B52\'>C</text></svg>';" alt="Cut &amp; Paste Interior Studio" width="44" height="44">
+        <img class="brand-logo" src="images/logo.png" alt="Cut &amp; Paste Interior Studio" width="52" height="52">
         <div class="brand-text">
           <span class="brand-name">CUT &amp; PASTE</span>
           <span class="brand-subtitle">Interior Studio</span>
@@ -299,12 +308,17 @@
 
       <div class="footer-grid">
         <div class="footer-brand">
-          <p class="footer-brand-title">CUT &amp; PASTE</p>
-          <p class="footer-brand-sub">Interior Studio</p>
-          <p class="footer-tagline">"Creating beautiful spaces that inspire."</p>
+          <a href="index.html" class="footer-brand-badge" aria-label="Cut &amp; Paste Interior Studio Home">
+            <img class="footer-logo" src="images/logo.png" alt="Cut &amp; Paste Interior Studio" width="46" height="46">
+            <div class="footer-brand-text">
+              <span class="footer-brand-name">CUT &amp; PASTE</span>
+              <span class="footer-brand-subtitle">Interior Studio</span>
+            </div>
+          </a>
+          <p class="footer-tagline">&ldquo;Creating beautiful spaces that inspire.&rdquo;</p>
         </div>
 
-        <div>
+        <div class="footer-col">
           <p class="footer-col-title">Explore</p>
           <ul class="footer-links-list">
             <li><a href="index.html" class="footer-link">Home</a></li>

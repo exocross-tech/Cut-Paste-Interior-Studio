@@ -40,6 +40,7 @@ function initHeader() {
 function initMobileMenu() {
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
+  const closeBtn = document.getElementById('mobile-menu-close');
   if (!hamburger || !mobileMenu) return;
 
   function openMenu() {
@@ -67,6 +68,10 @@ function initMobileMenu() {
       openMenu();
     }
   });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeMenu);
+  }
 
   // Close when clicking any menu link
   const menuLinks = mobileMenu.querySelectorAll('a');
