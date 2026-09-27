@@ -148,8 +148,9 @@ function initGalleryFilters() {
       const filterVal = btn.getAttribute('data-filter') || 'all';
 
       galleryItems.forEach(item => {
-        const itemCat = item.getAttribute('data-category') || '';
-        if (filterVal === 'all' || itemCat === filterVal) {
+        const itemCat = (item.getAttribute('data-category') || '').trim();
+        const cats = itemCat.split(/\s+/);
+        if (filterVal === 'all' || cats.includes(filterVal)) {
           item.style.display = 'block';
         } else {
           item.style.display = 'none';
@@ -290,21 +291,40 @@ function initVideoModal() {
   const frame = document.getElementById('video-frame');
   if (!frame) return;
 
-  frame.addEventListener('click', () => {
+  function playVideo() {
     const videoUrl = frame.getAttribute('data-video-url');
     if (!videoUrl || videoUrl.trim() === '') {
-      // Safe no-op if no video URL is configured yet
       return;
     }
 
-    const iframe = document.createElement('iframe');
-    iframe.src = videoUrl.includes('?') ? `${videoUrl}&autoplay=1` : `${videoUrl}?autoplay=1`;
-    iframe.setAttribute('allowfullscreen', '');
-    iframe.setAttribute('allow', 'autoplay; fullscreen');
-    iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;';
-    
     frame.innerHTML = '';
-    frame.appendChild(iframe);
+    const isDirectVideo = /\.(mp4|webm|ogg)(\?.*)?$/i.test(videoUrl);
+
+    if (isDirectVideo) {
+      const video = document.createElement('video');
+      video.src = videoUrl;
+      video.controls = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      video.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:none;background:#000;';
+      frame.appendChild(video);
+      video.play().catch(() => {});
+    } else {
+      const iframe = document.createElement('iframe');
+      iframe.src = videoUrl.includes('?') ? `${videoUrl}&autoplay=1` : `${videoUrl}?autoplay=1`;
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('allow', 'autoplay; fullscreen');
+      iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;';
+      frame.appendChild(iframe);
+    }
+  }
+
+  frame.addEventListener('click', playVideo);
+  frame.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      playVideo();
+    }
   });
 }
 
