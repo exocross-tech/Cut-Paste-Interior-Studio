@@ -1814,6 +1814,38 @@ input, select, textarea {
   color: rgba(247, 244, 238, 0.45);
 }
 
+.footer-bottom > * {
+  flex: 1 1 0;
+}
+
+.footer-bottom > *:first-child {
+  text-align: left;
+}
+
+.footer-powered {
+  text-align: center;
+  font-size: 0.76rem;
+  letter-spacing: 0.05em;
+  color: rgba(247, 244, 238, 0.65);
+}
+
+.footer-powered a {
+  color: var(--color-gold);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: color var(--transition-sm), text-shadow var(--transition-sm);
+}
+
+.footer-powered a:hover {
+  color: #FFFFFF;
+  text-shadow: 0 0 10px rgba(197, 160, 89, 0.4);
+}
+
+.footer-bottom > *:last-child {
+  text-align: right;
+}
+
 /* ─── 19. GALLERY PAGE STYLES ─── */
 .gallery-page-hero {
   padding-top: calc(var(--header-h) + 60px);
@@ -2422,7 +2454,11 @@ input, select, textarea {
   .footer-bottom {
     flex-direction: column;
     text-align: center;
-    gap: 8px;
+    gap: 10px;
+  }
+  .footer-bottom > * {
+    text-align: center !important;
+    flex: initial;
   }
 }
 
