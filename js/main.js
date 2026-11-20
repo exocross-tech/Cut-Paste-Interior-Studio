@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLightbox();
   initForms();
   initVideoModal();
+  initLocationPhotoModal();
 });
 
 /* ─── 1. HEADER SCROLL EFFECT ─── */
@@ -363,5 +364,73 @@ function initForms() {
         }, 5000);
       }
     }, 1200);
+  });
+}
+
+/* ─── 9. STUDIO LOCATION PHOTO MODAL ─── */
+function initLocationPhotoModal() {
+  const dialog = document.getElementById('studio-photo-dialog');
+  const dialogImg = document.getElementById('dialog-photo-img');
+  const dialogCaption = document.getElementById('dialog-photo-caption');
+  const closeBtn = document.getElementById('dialog-photo-close');
+  const photoItems = document.querySelectorAll('.studio-photo-item');
+
+  if (!dialog || !dialogImg || !photoItems.length) return;
+
+  function openPhoto(item) {
+    const fullSrc = item.getAttribute('data-full');
+    const caption = item.getAttribute('data-caption') || '';
+    const imgEl = item.querySelector('img');
+
+    if (!fullSrc) return;
+
+    dialogImg.src = fullSrc;
+    dialogImg.alt = imgEl ? imgEl.alt : 'Studio Location Photo';
+    if (dialogCaption) {
+      dialogCaption.innerHTML = caption;
+    }
+
+    if (typeof dialog.showModal === 'function') {
+      dialog.showModal();
+    } else {
+      dialog.setAttribute('open', '');
+    }
+  }
+
+  function closeDialog() {
+    if (typeof dialog.close === 'function') {
+      dialog.close();
+    } else {
+      dialog.removeAttribute('open');
+    }
+    dialogImg.src = '';
+  }
+
+  photoItems.forEach(item => {
+    item.addEventListener('click', () => openPhoto(item));
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openPhoto(item);
+      }
+    });
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeDialog);
+  }
+
+  // Backdrop click to close
+  dialog.addEventListener('click', (e) => {
+    const rect = dialog.getBoundingClientRect();
+    const isInDialog = (
+      rect.top <= e.clientY &&
+      e.clientY <= rect.top + rect.height &&
+      rect.left <= e.clientX &&
+      e.clientX <= rect.left + rect.width
+    );
+    if (!isInDialog || e.target === dialog) {
+      closeDialog();
+    }
   });
 }

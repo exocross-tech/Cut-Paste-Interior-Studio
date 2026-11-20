@@ -1499,6 +1499,273 @@ input, select, textarea {
   color: #FFFFFF !important;
 }
 
+/* ─── Studio Photos Card & Grid ─── */
+.studio-photos-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 16px 44px rgba(42, 33, 27, 0.05);
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.studio-photos-header {
+  padding: 16px 22px;
+  background-color: #FAF7F2;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.studio-photos-header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.studio-photos-badge {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-bronze);
+  display: block;
+}
+
+.studio-photos-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--color-brown-900);
+  line-height: 1.2;
+}
+
+.studio-photos-sub {
+  font-size: 0.74rem;
+  color: var(--color-text-muted);
+}
+
+.studio-photos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 18px 20px;
+}
+
+.studio-photo-item {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  background-color: #FAF7F2;
+  border: 1px solid var(--color-border-light);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: transform var(--transition-sm), box-shadow var(--transition-sm), border-color var(--transition-sm);
+  margin: 0;
+  text-align: left;
+}
+
+.studio-photo-item:hover,
+.studio-photo-item:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--color-bronze);
+  box-shadow: 0 10px 24px rgba(42, 33, 27, 0.08);
+  outline: none;
+}
+
+.studio-photo-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: #EFEBE5;
+}
+
+.studio-photo-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s var(--ease);
+}
+
+.studio-photo-item:hover .studio-photo-img-wrap img {
+  transform: scale(1.05);
+}
+
+.studio-photo-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(42, 33, 27, 0.88);
+  backdrop-filter: blur(4px);
+  color: #FAF7F2;
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.studio-photo-tag i {
+  color: var(--color-bronze-light);
+  font-size: 0.7rem;
+}
+
+.studio-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(42, 33, 27, 0.35);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--transition-sm);
+  z-index: 3;
+}
+
+.studio-photo-item:hover .studio-photo-overlay {
+  opacity: 1;
+}
+
+.studio-photo-zoom-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  color: var(--color-brown-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(0.85);
+  transition: transform var(--transition-sm);
+}
+
+.studio-photo-item:hover .studio-photo-zoom-icon {
+  transform: scale(1);
+}
+
+.studio-photo-caption {
+  padding: 12px 14px;
+}
+
+.studio-photo-title {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-brown-900);
+  margin-bottom: 3px;
+  line-height: 1.3;
+}
+
+.studio-photo-desc {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+}
+
+/* ─── Studio Photo Zoom Accessible Dialog ─── */
+.studio-photo-dialog {
+  border: none;
+  background: transparent;
+  padding: 0;
+  max-width: 90vw;
+  max-height: 90vh;
+  margin: auto;
+}
+
+.studio-photo-dialog::backdrop {
+  background-color: rgba(20, 15, 12, 0.88);
+  backdrop-filter: blur(6px);
+}
+
+.dialog-inner {
+  position: relative;
+  background-color: var(--color-brown-900);
+  border: 1px solid rgba(164, 123, 82, 0.35);
+  border-radius: 3px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  max-width: 900px;
+}
+
+.dialog-img-container {
+  max-width: 82vw;
+  max-height: 72vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #1a1410;
+}
+
+.dialog-img-container img {
+  max-width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+  border-radius: 2px;
+}
+
+.dialog-photo-caption {
+  margin-top: 14px;
+  color: #FAF7F2;
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  text-align: center;
+  line-height: 1.5;
+  padding-inline: 12px;
+}
+
+.dialog-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #FAF7F2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color var(--transition-sm), transform var(--transition-sm);
+  z-index: 10;
+}
+
+.dialog-close-btn:hover {
+  background-color: var(--color-bronze);
+  transform: rotate(90deg);
+}
+
+@media (max-width: 580px) {
+  .studio-photos-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 14px 14px;
+  }
+
+  .dialog-inner {
+    padding: 16px 12px 14px;
+  }
+}
+
 /* ─── Studio Map Card ─── */
 .studio-map-col {
   width: 100%;
@@ -1572,7 +1839,7 @@ input, select, textarea {
 .studio-map-frame {
   position: relative;
   width: 100%;
-  min-height: 390px;
+  min-height: clamp(280px, 28vw, 340px);
   background-color: #EFEBE5;
 }
 

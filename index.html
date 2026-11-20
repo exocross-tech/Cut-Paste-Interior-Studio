@@ -642,6 +642,64 @@ fbq('track', 'PageView');
 
           <!-- Right: Visible Studio Location Map Card -->
           <div class="studio-map-col fade-up delay-2">
+
+            <!-- Studio Landmarks & Location Photos Card -->
+            <div class="studio-photos-card">
+              <div class="studio-photos-header">
+                <div class="studio-photos-header-info">
+                  <span class="studio-photos-badge">Studio Landmarks</span>
+                  <h3 class="studio-photos-title">Physical Studio Presence</h3>
+                </div>
+                <span class="studio-photos-sub">Vanagaram, Chennai</span>
+              </div>
+
+              <div class="studio-photos-grid">
+                <!-- Exterior Landmark Photo -->
+                <figure class="studio-photo-item" tabindex="0" role="button"
+                  aria-label="Enlarge Building Exterior and Signboard photo"
+                  data-full="images/location/studio-building-exterior.jpg"
+                  data-caption="Building Exterior &amp; Signboard &mdash; 200 Feet Bypass Road near Porur Tollgate, Vanagaram, Chennai">
+                  <div class="studio-photo-img-wrap">
+                    <img src="images/location/studio-building-exterior.jpg"
+                      alt="Cut &amp; Paste Interior Studio illuminated building signboard on 200 Feet Bypass Road, Vanagaram, Chennai"
+                      width="1024" height="768" loading="lazy">
+                    <span class="studio-photo-tag">
+                      <i class="fas fa-building" aria-hidden="true"></i> Building Landmark
+                    </span>
+                    <div class="studio-photo-overlay" aria-hidden="true">
+                      <span class="studio-photo-zoom-icon"><i class="fas fa-magnifying-glass-plus"></i></span>
+                    </div>
+                  </div>
+                  <figcaption class="studio-photo-caption">
+                    <p class="studio-photo-title">Building Exterior &amp; Signboard</p>
+                    <p class="studio-photo-desc">Prominent illuminated signage on 200 Feet Bypass Road near Porur Tollgate.</p>
+                  </figcaption>
+                </figure>
+
+                <!-- Entrance Storefront Photo -->
+                <figure class="studio-photo-item" tabindex="0" role="button"
+                  aria-label="Enlarge Studio Entrance and Front photo"
+                  data-full="images/location/studio-entrance-storefront.jpg"
+                  data-caption="Studio Storefront &amp; Entrance &mdash; Door no 259/1, Omsakthi Nagar, Vanagaram, Chennai">
+                  <div class="studio-photo-img-wrap">
+                    <img src="images/location/studio-entrance-storefront.jpg"
+                      alt="Cut &amp; Paste Interior Studio storefront glass entrance showing interior woodwork and design services"
+                      width="768" height="1024" loading="lazy">
+                    <span class="studio-photo-tag">
+                      <i class="fas fa-door-open" aria-hidden="true"></i> Studio Entrance
+                    </span>
+                    <div class="studio-photo-overlay" aria-hidden="true">
+                      <span class="studio-photo-zoom-icon"><i class="fas fa-magnifying-glass-plus"></i></span>
+                    </div>
+                  </div>
+                  <figcaption class="studio-photo-caption">
+                    <p class="studio-photo-title">Studio Front &amp; Entrance</p>
+                    <p class="studio-photo-desc">Welcome to our design studio &mdash; explore finishes, samples, and floor plans.</p>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+
             <div class="studio-map-card">
               <div class="studio-map-header">
                 <div class="studio-map-header-info">
@@ -771,6 +829,19 @@ fbq('track', 'PageView');
 
     </div>
   </footer>
+
+  <!-- Accessible Studio Photo Zoom Dialog -->
+  <dialog id="studio-photo-dialog" class="studio-photo-dialog" aria-labelledby="dialog-photo-caption">
+    <div class="dialog-inner">
+      <button type="button" class="dialog-close-btn" id="dialog-photo-close" aria-label="Close photo view">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+      <div class="dialog-img-container">
+        <img id="dialog-photo-img" src="" alt="">
+      </div>
+      <p id="dialog-photo-caption" class="dialog-photo-caption"></p>
+    </div>
+  </dialog>
 
   <!-- Modular Interactive JavaScript -->
   <script src="js/main.js" defer></script>
